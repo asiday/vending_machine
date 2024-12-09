@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -33,7 +35,7 @@ public class InventoryController {
     }
 
     @PutMapping("/{product_id}")
-    public Inventory loadProduct(@RequestBody Inventory inventory,
+    public Inventory loadProduct(@RequestBody @Valid Inventory inventory,
             @PathVariable Long product_id) {
         return inventoryService.update(inventory, product_id);
     }
