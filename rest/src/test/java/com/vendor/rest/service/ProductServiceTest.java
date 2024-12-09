@@ -42,6 +42,5 @@ class ProductServiceTest {
         assertEquals("Product1", result.get(0).getName());
         assertEquals("Product2", result.get(1).getName());
         verify(productDao, times(1)).findAll();
-
     }
 }

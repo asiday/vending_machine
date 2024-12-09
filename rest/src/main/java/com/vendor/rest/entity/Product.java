@@ -2,11 +2,14 @@ package com.vendor.rest.entity;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
@@ -29,6 +32,9 @@ public class Product {
     @Size(max = 50)
     private String name;
 
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Inventory inventory;
+
     @Column(name = "price")
     @NotNull
 //    @Digits(integer = 18, fraction = 2, message = "Price must have up to 18 digits before the decimal and 2 after the decimal")
@@ -42,7 +48,9 @@ public class Product {
     public Long getId() {
         return id;
     }
-
+    public void setId(Long id) {
+        this.id = id;
+    }
     public Double getPrice() {
         return price;
     }
