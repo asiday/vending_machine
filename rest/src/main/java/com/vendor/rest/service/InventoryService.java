@@ -5,9 +5,11 @@ import com.vendor.rest.entity.Inventory;
 import java.util.List;
 
 public interface InventoryService {
-    public List<Inventory> findAll();
+    List<Inventory> findAll();
 
-    public Inventory update(Inventory inventory, Long product_id);
+    Inventory findById(Long id);
 
-    public Inventory save(Inventory inventory);
+    Inventory update(Inventory inventory, Long id);
+
+    Inventory save(Inventory inventory);
 }

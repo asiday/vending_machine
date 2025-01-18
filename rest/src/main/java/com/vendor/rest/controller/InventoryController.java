@@ -29,14 +29,26 @@ public class InventoryController {
      *
      * @return a list of all items in the machine.
      */
+//    @GetMapping
+//    public List<Inventory> getAllProducts() {
+//        return (List<Inventory>) inventoryService.findAll();
+//    }
+//
+//    @PutMapping("/{product_id}")
+//    public Inventory loadProduct(@RequestBody @Valid Inventory inventory,
+//            @PathVariable Long product_id) {
+//        return inventoryService.update(inventory, product_id);
+//    }
     @GetMapping
     public List<Inventory> getAllProducts() {
         return (List<Inventory>) inventoryService.findAll();
     }
-
-    @PutMapping("/{product_id}")
-    public Inventory loadProduct(@RequestBody @Valid Inventory inventory,
-            @PathVariable Long product_id) {
-        return inventoryService.update(inventory, product_id);
+    @GetMapping("/{id}")
+    public Inventory one(@PathVariable Long id) {
+        return inventoryService.findById(id);
+    }
+    @PutMapping("/{id}")
+    public Inventory loadProduct(@RequestBody @Valid Inventory inventory, @PathVariable Long id) {
+        return inventoryService.update(inventory, id);
     }
 }

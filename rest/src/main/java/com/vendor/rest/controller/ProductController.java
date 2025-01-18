@@ -30,7 +30,6 @@ public class ProductController {
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
-
     /**
      * Retrieves all products.
      *
@@ -59,5 +58,4 @@ public class ProductController {
             @PathVariable Long id) {
         return productService.update(id, product);
     }
-
 }
